@@ -31,6 +31,7 @@ npm run build
 
 
 ## convert from jsx to native javascript
+or the online version https://babeljs.io/repl/
 ```
 mkdir foo
 cd foo/
