@@ -9,16 +9,25 @@ $ npm --version
 8.3.0
 ```
 
-
-
-
-create a project
+convert reactjs to native javascript
 ```
 mkdir foo
 cd foo/
 npm init -y
 npm install babel-cli@6 babel-preset-react-app@3
 mkdir src
+```
+
+create a reactjs project
+```
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+start the dev server
+```
+npm start
 ```
 
 convert from jsx to native javascript
