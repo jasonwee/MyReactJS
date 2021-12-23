@@ -9,15 +9,6 @@ $ npm --version
 8.3.0
 ```
 
-convert reactjs to native javascript
-```
-mkdir foo
-cd foo/
-npm init -y
-npm install babel-cli@6 babel-preset-react-app@3
-mkdir src
-```
-
 create a reactjs project
 ```
 npx create-react-app my-app
@@ -30,7 +21,21 @@ start the dev server
 npm start
 ```
 
+deploy to production
+```
+npm run build
+# then check in build folder
+```
+
+
+
+
 convert from jsx to native javascript
 ```
+mkdir foo
+cd foo/
+npm init -y
+npm install babel-cli@6 babel-preset-react-app@3
+mkdir src
 npx babel --watch src --out-dir . --presets react-app/prod
 ```
