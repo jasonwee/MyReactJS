@@ -36,10 +36,23 @@ class Board extends React.Component {
 
   renderSquare(i) {
     return (<Square
+	  key={"square " +i }
 	  value={this.props.squares[i]}
 	  onClick={() => this.props.onClick(i)}
 	   />
     );
+  }
+
+  renderSquares(n) {
+       let squares = [];
+       for (let i = n; i < n+3; i++) {
+          squares.push(this.renderSquare(i));
+       }
+       return squares;
+  }
+
+  renderRows(i) {
+       return <div className="board-row">{this.renderSquares(i)}</div>;
   }
 
   render() {
@@ -51,24 +64,15 @@ class Board extends React.Component {
        status = 'Next player: ' + (this.props.xIsNext ? 'X' : 'O');
     }
 
+    let rows = [];
+    for (let i = 0; i <= 6; i=i+3) {
+       rows.push(this.renderRows(i));
+    }
+
     return (
-      <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
+       <div>
+	  {rows}
+       </div>
     );
   }
 
