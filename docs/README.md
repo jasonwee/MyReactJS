@@ -9,4 +9,6 @@ dev tools : https://chrome.google.com/webstore/detail/react-developer-tools/
 
 In React, function components are a simpler way to write components that only contain a render method and don’t have their own state. Instead of defining a class which extends React.Component, we can write a function that takes props as input and returns what should be rendered. Function components are less tedious to write than classes, and many components can be expressed this way.
 
+Install the Node Version Manager (NVM) for Node.js. This program helps you manage different Node.js versions on a single system.
 
+JSX = JavaScript Xml
