@@ -12,3 +12,7 @@ In React, function components are a simpler way to write components that only co
 Install the Node Version Manager (NVM) for Node.js. This program helps you manage different Node.js versions on a single system.
 
 JSX = JavaScript Xml
+
+need 2 scripts
+* react : to create element
+* react-dom : to render elements to dom.
