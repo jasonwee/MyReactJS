@@ -50,5 +50,6 @@ $ tree .
 └── README.md
 
 0 directories, 2 files
-mkdir public src
+$ mkdir public src
+$ npm install --save-dev @babel/core@7.1.0 @babel/cli@7.1.0 @babel/preset-env@7.1.0 @babel/preset-react@7.0.0
 ```
