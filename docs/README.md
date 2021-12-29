@@ -16,3 +16,9 @@ JSX = JavaScript Xml
 need 2 scripts
 * react : to create element
 * react-dom : to render elements to dom.
+
+create-react-app includes built tools such as webpack, Babel, and ESLint.
+
+ES6 stands for ECMAScript 6.
+
+
