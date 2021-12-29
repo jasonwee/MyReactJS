@@ -9,6 +9,24 @@ dev tools : https://chrome.google.com/webstore/detail/react-developer-tools/
 
 In React, function components are a simpler way to write components that only contain a render method and don’t have their own state. Instead of defining a class which extends React.Component, we can write a function that takes props as input and returns what should be rendered. Function components are less tedious to write than classes, and many components can be expressed this way.
 
+A Function component also returns HTML, and behaves much the same way as a Class component, but Function components can be written using much less code, are easier to understand, and will be preferred in this tutorial.
+
+class component
+```
+class Car extends React.Component {
+  render() {
+    return <h2>Hi, I am a Car!</h2>;
+  }
+}
+```
+
+function component
+```
+function Car() {
+  return <h2>Hi, I am a Car!</h2>;
+}
+```
+
 Install the Node Version Manager (NVM) for Node.js. This program helps you manage different Node.js versions on a single system.
 
 JSX = JavaScript Xml
@@ -21,4 +39,6 @@ create-react-app includes built tools such as webpack, Babel, and ESLint.
 
 ES6 stands for ECMAScript 6.
 
+JSX follows XML rules, and therefore HTML elements must be properly closed.
 
+The class attribute is a much used attribute in HTML, but since JSX is rendered as JavaScript, and the class keyword is a reserved word in JavaScript, you are not allowed to use it in JSX. Use attribute className instead.
