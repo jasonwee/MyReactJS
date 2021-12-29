@@ -42,3 +42,5 @@ ES6 stands for ECMAScript 6.
 JSX follows XML rules, and therefore HTML elements must be properly closed.
 
 The class attribute is a much used attribute in HTML, but since JSX is rendered as JavaScript, and the class keyword is a reserved word in JavaScript, you are not allowed to use it in JSX. Use attribute className instead.
+
+Always use the setState() method to change the state object, it will ensure that the component knows its been updated and calls the render() method (and all the other lifecycle methods).
