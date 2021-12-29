@@ -67,3 +67,6 @@ render()
 getSnapshotBeforeUpdate()
 componentDidUpdate()
 The render() method is required and will always be called, the others are optional and will be called if you define them.
+
+
+Note: In JSX, JavaScript expressions are written inside curly braces, and since JavaScript objects also use curly braces, the styling in the example above is written inside two sets of curly braces {{}}.
