@@ -83,4 +83,35 @@ useEffect(<function>, <dependency>)
 The useCallback and useMemo Hooks are similar. The main difference is that useMemo returns a memoized value and useCallback returns a memoized function. 
 
 
+Babel is a JavaScript compiler which compiles many variant (es2015, es6, etc.,) of JavaScript into standard JavaScript code supported by all browsers. React uses JSX, an extension of JavaScript to design the user interface code. Babel is used to compile the JSX code into JavaScript code.
 
+
+
+```
+                          +----------------------+      +--------------+
+                          | React.createElement  |      |  React App   |
+                          |    (React API)       |      |              |
+                          +----------------------+      +--------------+
+                                  |                           |
+                                  | build upon                | calls
+                                  v                           v
+                          +----------------------+      +------------------+
+                          | User Interface       |      | ReactDOM.render  |
+                          |                      |----->| (React API)      |
+                          +----------------------+      +------------------+
+                                   ^                          |
+                                   | build upon               |
+                                   |                          v
+                            +-------------------+      +-------------------+
++----------------+          | React Component   |      | Virtual DOM       |
+|HTML (Modified) |--------->|(XML based markup) |      |                   |
++----------------+  build   +-------------------+      +-------------------+
+                    upon        ^                            |
+                                |                            |
++----------------+              |                            v
+| React Component|--------------+                      +-----------------------+
++----------------+  build upon                         | HTML DOM              |
+                                                       | (Specified container) |
+                                                       +-----------------------+
+
+```
