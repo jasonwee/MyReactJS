@@ -100,14 +100,14 @@ Babel is a JavaScript compiler which compiles many variant (es2015, es6, etc.,) 
                           |                      |----->| (React API)      |
                           +----------------------+      +------------------+
                                    ^                          |
-                                   | build upon               |
+                                   | build upon               | creates
                                    |                          v
                             +-------------------+      +-------------------+
 +----------------+          | React Component   |      | Virtual DOM       |
 |HTML (Modified) |--------->|(XML based markup) |      |                   |
 +----------------+  build   +-------------------+      +-------------------+
                     upon        ^                            |
-                                |                            |
+                                |                            | updates
 +----------------+              |                            v
 | React Component|--------------+                      +-----------------------+
 +----------------+  build upon                         | HTML DOM              |
