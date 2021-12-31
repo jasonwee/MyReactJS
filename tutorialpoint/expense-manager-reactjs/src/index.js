@@ -35,9 +35,15 @@ const items = [
    { id: 10, name: "Exam Fees", amount: 1245, spendDate: "2020-11-04", category: "Academic" }
 ]
 
+const name = "Grape Juice"
+const amount = 30.00
+const spendDate = new Date("2022-10-10")
+const category = "Food"
+
+
 ReactDOM.render(
    <React.StrictMode>
-      <ExpenseEntryItem />
+      <ExpenseEntryItem name={name} amount={amount} spendDate={spendDate} category={category} />
       <div>
            <MessageWithEvent name="React" />
            <MessageWithEvent name="React developer" />
