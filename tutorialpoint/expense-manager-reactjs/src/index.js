@@ -4,6 +4,7 @@ import ExpenseEntryItem from './components/ExpenseEntryItem'
 //import './index.css';
 //import App from './App';
 //import reportWebVitals from './reportWebVitals';
+import MessageWithEvent from './components/MessageWithEvent'
 
 /*
 ReactDOM.render(
@@ -22,6 +23,10 @@ ReactDOM.render(
 ReactDOM.render(
    <React.StrictMode>
       <ExpenseEntryItem />
+      <div>
+           <MessageWithEvent name="React" />
+           <MessageWithEvent name="React developer" />
+      </div>
    </React.StrictMode>,
    document.getElementById('root')
 );
