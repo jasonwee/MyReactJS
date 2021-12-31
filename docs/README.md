@@ -74,6 +74,8 @@ Note: In JSX, JavaScript expressions are written inside curly braces, and since 
 Hooks allow us to "hook" into React features such as state and lifecycle methods. Hooks will not work in React class components.
 
 
+Class component have a life cycle and access to each life cycle events through dedicated callback apis. Function component does not have life cycle. Again, React provides a hook, useEffect() for the function component to access different stages of the component.
+
 The useEffect Hook allows you to perform side effects in your components.
 Some examples of side effects are: fetching data, directly updating the DOM, and timers.
 useEffect accepts two arguments. The second argument is optional.
