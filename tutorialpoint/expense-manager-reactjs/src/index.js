@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Pager from './components/Pager'
 import ExpenseEntryItem from './components/ExpenseEntryItem'
 //import './index.css';
 //import App from './App';
@@ -39,16 +40,28 @@ const name = "Grape Juice"
 const amount = 30.00
 const spendDate = new Date("2022-10-10")
 const category = "Food"
+const pageCount = 3;
 
 
 ReactDOM.render(
    <React.StrictMode>
-      <ExpenseEntryItem name={name} amount={amount} spendDate={spendDate} category={category} />
+      <ExpenseEntryItem name={name} amount={amount} spendDate={spendDate} category={category}
+      header = { <div><h1>Expense manager</h1></div> }
+      footer = { <div style={{ textAlign: "left" }}> <p style={{ fontSize: 12 }}>Sample application</p> </div> }
+      />
       <div>
            <MessageWithEvent name="React" />
            <MessageWithEvent name="React developer" />
       </div>
-   <ExpenseEntryItemList items={items} />
+   <Pager items={items} pageCount={pageCount} render={
+	   pagerState => (
+	       <div>
+                  <ExpenseEntryItemList items={pagerState.items} 
+                        onDelete={pagerState.deleteHandler} />
+               </div>
+            )
+       }
+   />
    </React.StrictMode>
    ,
    document.getElementById('root')
