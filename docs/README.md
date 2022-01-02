@@ -117,3 +117,7 @@ Babel is a JavaScript compiler which compiles many variant (es2015, es6, etc.,) 
                                                        +-----------------------+
 
 ```
+
+React state should not be modified directly through this.state member variable and updating the state through member variable does not re-render the component.
+
+
