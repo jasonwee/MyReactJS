@@ -1,0 +1,16 @@
+.hello-enter {
+   opacity: 1;
+   transition: opacity 2000ms ease-in-out;
+}
+.hello-enter-active {
+   opacity: 1;
+   transition: opacity 2000ms ease-in-out;
+}
+.hello-exit {
+   opacity: 0;
+   transition: opacity 2000ms ease-in-out;
+}
+.hello-exit-active {
+   opacity: 0;
+   transition: opacity 2000ms ease-in-out;
+}
