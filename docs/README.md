@@ -121,3 +121,30 @@ Babel is a JavaScript compiler which compiles many variant (es2015, es6, etc.,) 
 React state should not be modified directly through this.state member variable and updating the state through member variable does not re-render the component.
 
 
+redux store workflow
+
+```
+                     +----------------------+                   +------------------+
+                     | React Components     |                   |  Actions         |
+                     |                      |------------------>|                  |
+                     +----------------------+                   +------------------+
+                             |                  Component             |
+  Components                 |               create actions           |   Actions are
+Subscribe to current state   |           (using action creators)      |   processed by
+  using connect API          |              and dispatches it         |   Reducers
+                             |                                        |
+                             v                                        v
+                     +----------------------+                   +------------------+
+                     |   State              |                   |  Reducers        |
+                     | (in Redux store)     |<------------------|                  |
+                     +----------------------+                   +------------------+
+
+```
+React component subscribes to the store and get the latest state during initialization of the application.
+To change the state, React component creates necessary action and dispatches the action.
+Reducer creates a new state based on the action and returns it. Store updates itself with the new state.
+Once the state changes, store sends the updated state to all its subscribed component.
+
+
+
+
