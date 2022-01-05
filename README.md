@@ -27,6 +27,11 @@ npm run build
 # then check in build folder
 ```
 
+By default, the production build is created assuming that the application will be hosted in the root folder of a web application. If the application needs to be hosted in a subfolder, then use below configuration in the package.json and then build the application.
+
+```
+{ ... "homepage": "http://domainname.com/path/to/subfolder", ... }
+```
 
 
 
