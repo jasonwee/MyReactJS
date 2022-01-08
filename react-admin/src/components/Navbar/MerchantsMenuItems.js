@@ -14,11 +14,11 @@ export const MerchantsMenuItems = [
     path: '/journey-designer',
     cName: 'dropdown-link'
   },
-  {
-    title: 'KYC Service',
-    path: '/kyc-service',
-    cName: 'dropdown-link'
-  },
+  //{
+  //  title: 'KYC Service',
+  //  path: '/kyc-service',
+  //  cName: 'dropdown-link'
+  //},
   // {
   //   title: 'Design',
   //   path: '/design',
