@@ -31,7 +31,7 @@ import axios from "axios";
 import { getInvoice } from "../../service/invoices";
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 import ExpandLessTwoToneIcon from '@mui/icons-material/ExpandLessTwoTone';
 import {Link} from "react-router-dom";
@@ -52,6 +52,7 @@ function createData(
     return { id, name, title, status };
 }
 
+/*
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     if (b[orderBy] < a[orderBy]) {
         return -1;
@@ -61,9 +62,11 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     }
     return 0;
 }
+*/
 
 type Order = "asc" | "desc";
 
+/*
 function getComparator<Key extends keyof any>(
     order: Order,
     orderBy: Key
@@ -75,7 +78,9 @@ function getComparator<Key extends keyof any>(
         ? (a, b) => descendingComparator(a, b, orderBy)
         : (a, b) => -descendingComparator(a, b, orderBy);
 }
+*/
 
+/*
 function stableSort<T>(array: T[], comparator: (a: T, b: T) => number) {
     const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
     stabilizedThis.sort((a, b) => {
@@ -85,10 +90,12 @@ function stableSort<T>(array: T[], comparator: (a: T, b: T) => number) {
     });
     return stabilizedThis.map((el) => el[0]);
 }
+*/
 
 interface HeadCell {
     disablePadding: boolean;
-    id: keyof Data;
+    //id: keyof Data;
+    id: string;
     label: string;
     numeric: boolean;
 }
@@ -110,7 +117,8 @@ interface EnhancedTableProps {
     numSelected: number;
     onRequestSort: (
         event: React.MouseEvent<unknown>,
-        property: keyof Data
+        //property: keyof Data
+        property: string
     ) => void;
     onSelectAllClick: (event: ChangeEvent<HTMLInputElement>) => void;
     order: Order;
@@ -129,7 +137,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
         onRequestSort,
     } = props;
     const createSortHandler =
-        (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
+        (property: string) => (event: React.MouseEvent<unknown>) => {
             onRequestSort(event, property);
         };
 
@@ -301,14 +309,14 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function AllInvoices() {
-    let history = useHistory();
+    let history = useNavigate();
     const classes = useStyles();
     const [order, setOrder] = useState<Order>("asc");
-    const [orderBy, setOrderBy] = useState<keyof Data>("name");
-    const [selected, setSelected] = useState<number[]>([]);
+    const [orderBy, setOrderBy] = useState<String>("name");
+    const [selected, setSelected] = useState<Number>([]);
     const [page, setPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(5);
-    const [rows, setRows] = useState<Data[]>([]);
+    const [rows, setRows] = useState<Data>([]);
     const [loading, setLoading] = useState(false);
     const [total, setTotal] = useState(0)
     const [select, setSelect] = useState(null)
@@ -372,7 +380,7 @@ export default function AllInvoices() {
 
     const handleRequestSort = (
         event: React.MouseEvent<unknown>,
-        property: keyof Data
+        property: Data
     ) => {
         const isAsc = orderBy === property && order === "asc";
         setOrder(isAsc ? "desc" : "asc");
@@ -473,8 +481,9 @@ export default function AllInvoices() {
                                     <CircularProgress />
                                 </div>
                             ) : null}
-                            {stableSort(rows, getComparator(order, orderBy))
-                                .map((row, index) => {
+                            {
+                              stableSort(rows, getComparator(order, orderBy))
+                            .map((row, index) => {
                                     const isItemSelected = isSelected(row.id);
                                     const labelId = `enhanced-table-checkbox-${index}`;
                                     return (

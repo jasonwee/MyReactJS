@@ -69,7 +69,7 @@ export default function Invoices() {
     setValue(newValue);
   };
 
-  //const AllInvoicesComponent = lazy(() => import('./invoices/AllInvoices'));
+  const AllInvoicesComponent = lazy(() => import('./invoices/AllInvoices'));
   //const OutstandingComponent = lazy(() => import('./invoices/Outstanding'));
   //const PaidComponent = lazy(() => import('./invoices/Paid'));
   //const PastDueComponent = lazy(() => import('./invoices/PastDue'));
@@ -96,7 +96,7 @@ export default function Invoices() {
                 <TabPanel value={value} index={0}>
                   <Suspense fallback={<div>Loading...</div>}>
                     <section>
-                          AllInvoicesComponent
+                          {<AllInvoicesComponent/>}
                     </section>
                   </Suspense>
                 </TabPanel>
