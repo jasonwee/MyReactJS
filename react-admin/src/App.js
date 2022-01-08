@@ -10,7 +10,7 @@ import JourneyDesigner from "./pages/JourneyDesigner";
 import Settings from './pages/Settings';
 import ApiSettings from "./pages/ApiSettings";
 import InvoiceTemplate from "./pages/InvoiceTemplate";
-//import Invoices from "./pages/Invoices";
+import Invoices from "./pages/Invoices";
 //import Support from './pages/Support';
 
 import SignUp from './pages/SignUp';
@@ -26,6 +26,7 @@ function App() {
            <Route path='/settings' element={<Settings/>} />
            <Route path='/api-settings' element={<ApiSettings/>} />
            <Route path='/invoice-template' element={<InvoiceTemplate/>} />
+           <Route path='/invoices' element={<Invoices/>} />
            <Route path='/sign-up' element={<SignUp/>} />
         </Routes>
      </Router>

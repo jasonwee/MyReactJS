@@ -69,7 +69,7 @@ export default function Invoices() {
     setValue(newValue);
   };
 
-  const AllInvoicesComponent = lazy(() => import('./invoices/AllInvoices'));
+  //const AllInvoicesComponent = lazy(() => import('./invoices/AllInvoices'));
   //const OutstandingComponent = lazy(() => import('./invoices/Outstanding'));
   //const PaidComponent = lazy(() => import('./invoices/Paid'));
   //const PastDueComponent = lazy(() => import('./invoices/PastDue'));
@@ -96,35 +96,35 @@ export default function Invoices() {
                 <TabPanel value={value} index={0}>
                   <Suspense fallback={<div>Loading...</div>}>
                     <section>
-                      <AllInvoicesComponent />
+                          AllInvoicesComponent
                     </section>
                   </Suspense>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Suspense fallback={<div>Loading...</div>}>
                         <section>
-                            //<OutstandingComponent />
+                          OutstandingComponent
                         </section>
                     </Suspense>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                     <Suspense fallback={<div>Loading...</div>}>
                         <section>
-                          //  <PaidComponent />
+                          PaidComponent
                         </section>
                     </Suspense>
                 </TabPanel>
                 <TabPanel value={value} index={3}>
                     <Suspense fallback={<div>Loading...</div>}>
                         <section>
-                          //  <PastDueComponent />
+                          PastDueComponent
                         </section>
                     </Suspense>
                 </TabPanel>
                 <TabPanel value={value} index={4}>
                     <Suspense fallback={<div>Loading...</div>}>
                         <section>
-                          //  <SubscriptionsComponent />
+                          SubscriptionsComponent
                         </section>
                     </Suspense>
                 </TabPanel>
