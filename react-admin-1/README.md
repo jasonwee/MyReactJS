@@ -2,6 +2,17 @@
 
 This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
 
+
+## project initialize
+```bash
+mkdir react-admin-1
+cd react-admin-1
+npm create umi
+? Select the boilerplate type ant-design-pro
+? 🤓 Which language do you want to use? JavaScript
+? 🚀 Do you need all the blocks or a simple scaffold? simple
+```
+
 ## Environment Prepare
 
 Install `node_modules`:
@@ -10,11 +21,6 @@ Install `node_modules`:
 npm install
 ```
 
-or
-
-```bash
-yarn
-```
 
 ## Provided Scripts
 
@@ -25,7 +31,9 @@ Scripts provided in `package.json`. It's safe to modify or add additional script
 ### Start project
 
 ```bash
-npm start
+# for node v17.3.0, need to export node options
+$ export NODE_OPTIONS=--openssl-legacy-provider
+$ npm start
 ```
 
 ### Build project
