@@ -1,6 +1,5 @@
 const Settings = {
   navTheme: 'light',
-  // 拂晓蓝
   primaryColor: '#1890ff',
   layout: 'mix',
   contentWidth: 'Fluid',
@@ -9,7 +8,7 @@ const Settings = {
   colorWeak: false,
   title: 'Weetech Pro',
   pwa: false,
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: 'https://jasonwee.github.io/courses/favicon.ico',
   iconfontUrl: '',
 };
 export default Settings;
