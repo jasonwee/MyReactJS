@@ -36,6 +36,21 @@ $ export NODE_OPTIONS=--openssl-legacy-provider
 $ npm start
 ```
 
+### how to add page
+
+```bash
+cd src/pages/
+touch NewPage.js NewPage.less
+cd ../../
+vim config/routes.js
+  {
+    name: 'newPage',
+    icon: 'home',
+    path:'/new',
+    component:'./NewPage',
+  },
+```
+
 ### Build project
 
 ```bash

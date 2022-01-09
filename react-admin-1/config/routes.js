@@ -49,6 +49,12 @@ export default [
     component: './TableList',
   },
   {
+    name: 'newPage',
+    icon: 'home',
+    path:'/new',
+    component:'./NewPage',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
