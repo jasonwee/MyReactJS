@@ -147,4 +147,4 @@ Once the state changes, store sends the updated state to all its subscribed comp
 
 
 
-
+Webpack is used for module packaging, development, and production pipeline automation. We will use webpack-dev-server during development, webpack to create production builds, and webpack CLI provides a set of commands. Webpack compiles these into a single file(bundle). To install webpack use the command shown in the below image.
