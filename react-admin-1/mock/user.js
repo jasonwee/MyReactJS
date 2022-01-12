@@ -39,6 +39,8 @@ export default {
       return;
     }
 
+    console.log("sending mocking data");
+
     res.send({
       success: true,
       data: {
@@ -117,7 +119,9 @@ export default {
   ],
   'POST /api/login/account': async (req, res) => {
     const { password, username, type } = req.body;
-    await waitTime(2000);
+    await waitTime(500);
+
+    console.log("posting mocking data");
 
     if (password === 'ant.design' && username === 'admin') {
       res.send({
