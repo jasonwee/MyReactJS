@@ -55,6 +55,12 @@ export default [
     component:'./NewPage',
   },
   {
+    name: 'newPage1',
+    icon: 'home',
+    path:'/new1',
+    component:'./NewPage1',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
