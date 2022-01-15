@@ -18,8 +18,10 @@ export const initialStateConfig = {
 
 export async function getInitialState() {
   const fetchUserInfo = async () => {
+    console.log("called getInitialState 1");
     try {
       const msg = await queryCurrentUser();
+      console.log(msg);
       return msg.data;
     } catch (error) {
       history.push(loginPath);
@@ -29,6 +31,7 @@ export async function getInitialState() {
   }; // 如果是登录页面，不执行
 
   if (history.location.pathname !== loginPath) {
+    console.log("called getInitialState 2");
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,
@@ -37,6 +40,7 @@ export async function getInitialState() {
     };
   }
 
+  console.log("called getInitialState 3");
   return {
     fetchUserInfo,
     settings: {},
