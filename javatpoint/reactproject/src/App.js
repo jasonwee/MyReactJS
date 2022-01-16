@@ -1,26 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';  
+class App extends React.Component {  
+   constructor() {
+      super();        
+      this.state = { displayBio: false };
+      console.log("component this", this);
+      this.toggleDisplayBio = this.toggleDisplayBio.bind(this);
+   }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          hello world {1+2}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+   toggleDisplayBio(){  
+      this.setState({displayBio: !this.state.displayBio});  
+   }  
 
-export default App;
+   render() {
+      return (  
+              <div>  
+                  <h1>Welcome to JavaTpoint!!</h1>  
+                  {  
+                      this.state.displayBio ? (   
+                          <div>  
+                              <p><h4>Javatpoint is one of the best Java training institute in Noida, Delhi, Gurugram, Ghaziabad and Faridabad. We have a team of experienced Java developers and trainers from multinational companies to teach our campus students.</h4></p>  
+                              <button onClick={this.toggleDisplayBio}> Show Less </button>  
+                        </div>  
+                          ) : (  
+                              <div>  
+                                  <button onClick={this.toggleDisplayBio}> Read More </button>  
+                              </div>  
+                          )  
+                  }  
+             </div>  
+        )
+   }
+}  
+export default App;  
