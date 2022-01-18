@@ -46,6 +46,8 @@ export default defineConfig({
   manifest: {
     basePath: '/',
   },
+  base: '/admin/',
+  publicPath: '/admin/',
   // Fast Refresh 热更新
   fastRefresh: {},
   openAPI: [
