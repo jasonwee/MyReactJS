@@ -148,3 +148,14 @@ Once the state changes, store sends the updated state to all its subscribed comp
 
 
 Webpack is used for module packaging, development, and production pipeline automation. We will use webpack-dev-server during development, webpack to create production builds, and webpack CLI provides a set of commands. Webpack compiles these into a single file(bundle). To install webpack use the command shown in the below image.
+
+
+SN	Props											State
+1.	Props are read-only.									State changes can be asynchronous.
+2.	Props are immutable.									State is mutable.
+3.	Props allow you to pass data from one component to other components as an argument.	State holds information about the components.
+4.	Props can be accessed by the child component.						State cannot be accessed by child components.
+5.	Props are used to communicate between components.					States can be used for rendering dynamic changes with the component.
+6.	Stateless component can have Props.							Stateless components cannot have State.
+7.	Props make components reusable.								State cannot make components reusable.
+8.	Props are external and controlled by whatever renders the component.			The State is internal and controlled by the React Component itself.
