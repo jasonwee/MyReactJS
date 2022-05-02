@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import Stack from "@mui/material/Stack";
+
+const style = { 
+  mt: 2,
+  width: {
+    sm: 200,
+    md: 300,
+  },
+  backgroundColor: {
+    xs: "secondary.light",
+    sm: "#0000ff"
+  },
+  boxShadow: 6,
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Stack>
+      <TextField
+        sx={{...style, mb: 2, border: "solid black 2px", "& .MuiFilledInput-input": {color: "white"} }}
+        id="standard-basic"
+        label="Filled"
+        variant="filled"
+      />
+      <TextField
+        sx={{
+          ...style, 
+          "& .MuiOutlinedInput-root:hover" : {
+            "& > fieldset" : {
+              borderColor: "orange"
+            }
+          }
+        }}
+        id="standard-basic"
+        label="standard"
+        variant="outlined"
+      />
+    </Stack>
   );
 }
 
