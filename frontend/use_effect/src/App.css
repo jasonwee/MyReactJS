@@ -36,3 +36,86 @@
     transform: rotate(360deg);
   }
 }
+
+/* UseEffect Styles */
+
+.box-container {
+	display: flex;
+	justify-content: center;
+}
+
+.box {
+	width: 100px;
+	height: 100px;
+	background-color: rgba(0, 0, 0, 0.486);
+	margin: 0 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #af111c;
+}
+
+.scary-text {
+	color: #af111c;
+	font-family: fantasy;
+}
+
+.animal-image {
+	width: 150px;
+	height: 150px;
+	margin-top: 10px;
+}
+
+/* UseEffect Styles */
+
+/* UseContext Styles */
+
+.child-box-1 {
+	width: 500px;
+	height: 500px;
+	border: 0.1rem solid black;
+	margin: 10rem auto;
+}
+
+.child-box-1 {
+	width: 500px;
+	height: 500px;
+	border: 0.1rem solid black;
+	margin: 10rem auto;
+	background-color: #1411af;
+}
+
+.child-box-2 {
+	width: 400px;
+	height: 400px;
+	border: 0.1rem solid black;
+	background-color: #af111c;
+}
+
+.child-box-3 {
+	width: 300px;
+	height: 300px;
+	border: 0.1rem solid black;
+	background-color: #af11af;
+}
+
+.child-box-4 {
+	width: 200px;
+	height: 200px;
+	border: 0.1rem solid black;
+	background-color: #11af26;
+}
+
+.child-box-5 {
+	width: 100px;
+	height: 100px;
+	border: 0.1rem solid black;
+	background-color: #af4311;
+}
+
+.box-header {
+	color: white;
+	font-weight: 900;
+}
+
+/*  */

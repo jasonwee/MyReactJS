@@ -1,4 +1,4 @@
-https://www.youtube.com/watch?v=Yz-BMNyuh0o
+https://www.youtube.com/watch?v=bd8fl6jJT4A
 
 ```
 source init-env-nodejs18.sh
