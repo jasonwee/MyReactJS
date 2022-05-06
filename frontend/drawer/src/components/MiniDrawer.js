@@ -202,7 +202,7 @@ export default function MiniDrawer() {
           <Typography variant="h6" noWrap component="div" >
             Management Billing Report
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
