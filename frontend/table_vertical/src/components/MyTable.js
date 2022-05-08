@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 
 
 
@@ -24,20 +25,61 @@ const rows = [
 
 export default function MyTable() {
   return (
-    <TableContainer component={Paper}>
+  <Box display="flex" flexDirection="row" >
+    <TableContainer >
 <Table>
   <TableBody>
     <TableRow>
-        <TableCell variant="head">Header 1</TableCell>
-        <TableCell>Cell 1</TableCell>
+        <TableCell variant="head">Scheduled Work Start Date</TableCell>
+        <TableCell>3/21/2022</TableCell>
     </TableRow>
     <TableRow>
-        <TableCell variant="head">Header 1</TableCell>
-        <TableCell>Cell 2</TableCell>
+        <TableCell variant="head">Actual Work Start Date</TableCell>
+        <TableCell>3/24/2022</TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell variant="head">Total No of STD Days</TableCell>
+        <TableCell>4</TableCell>
     </TableRow>
   </TableBody>
 </Table>
     </TableContainer>
+    <TableContainer>
+<Table>
+  <TableBody>
+    <TableRow>
+        <TableCell variant="head">Scheduled Work End Date</TableCell>
+        <TableCell>3/28/2022</TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell variant="head">Actual Work End Date</TableCell>
+        <TableCell>4/1/2022</TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell variant="head">Total No of Hours</TableCell>
+        <TableCell>44</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+    </TableContainer>
+    <TableContainer>
+<Table>
+  <TableBody>
+    <TableRow>
+        <TableCell variant="head">Performacne Rating</TableCell>
+        <TableCell>Acceptable</TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell variant="head">Average Hours /Day</TableCell>
+        <TableCell>11</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+    </TableContainer>
+
+</Box>
   );
 }
 
