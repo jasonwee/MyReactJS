@@ -26,6 +26,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
@@ -60,7 +61,7 @@ const closedMixin = (theme) => ({
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'flex-end',
+  justifyContent: 'flex-start',
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
@@ -117,6 +118,7 @@ const AppBar = styled(MuiAppBar, {
   ...(open && {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
+    //width: '90%',
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -143,7 +145,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function MiniDrawer() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const [subPrjOpen, setSubPrjOpen] = React.useState(false);
   const [subRepOpen, setSubRepOpen] = React.useState(false);
@@ -182,10 +184,21 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+  const closeAll = () => {
+    setSubPrjOpen(false);
+    setSubRepOpen(false);
+    setOpen(false);
+  }
+
+
+  const handleDrawerSpecial = () => {
+        console.log("hi")
+  }; 
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -244,7 +257,8 @@ export default function MiniDrawer() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}  PaperProps={{
+      <ClickAwayListener mouseEvent="onMouseDown" touchEvent="onTouchStart" onClickAway={() => open && handleDrawerClose()} >
+      <Drawer  variant="permanent" open={open}  PaperProps={{
               sx: {
                 backgroundColor: "#1976d2",
                 color: "#fff"
@@ -255,8 +269,7 @@ export default function MiniDrawer() {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
-      <List>
+      <List >
       <ListItemButton onClick={handlePrjClick}>
         <ListItemIcon>
           <SendIcon />
@@ -267,22 +280,22 @@ export default function MiniDrawer() {
       <Collapse in={subPrjOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
+            <ListItemIcon onClick={closeAll}>
               <StarBorder />
             </ListItemIcon>
-            <ListItemText primary="create" />
+            <ListItemText primary="create" onClick={closeAll}/>
           </ListItemButton>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
+            <ListItemIcon onClick={closeAll}>
               <StarBorder />
             </ListItemIcon>
-            <ListItemText primary="delete" />
+            <ListItemText primary="delete" onClick={closeAll} />
           </ListItemButton>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
+            <ListItemIcon onClick={closeAll}>
               <StarBorder />
             </ListItemIcon>
-            <ListItemText primary="upload" />
+            <ListItemText primary="upload" onClick={closeAll} />
           </ListItemButton>
         </List>
       </Collapse>
@@ -355,6 +368,7 @@ export default function MiniDrawer() {
         </List>
 */}
       </Drawer>
+      </ClickAwayListener>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Typography paragraph>
