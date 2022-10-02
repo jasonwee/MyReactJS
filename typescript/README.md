@@ -19,3 +19,16 @@ https://palantir.github.io/tslint/usage/configuration/
 this is webpack configuration file. this file is optional as it has default config and its value. if you want to override those default value, create this file and place at the root project, it will be automatically read.
 
 documentation for the config definition : https://webpack.js.org/configuration/
+
+
+# typescript online editor
+https://www.typescriptlang.org/play
+
+
+# TypeScript Compiler
+The TypeScript compiler is itself a .ts file compiled down to JavaScript (.js) file. The TSC (TypeScript Compiler) is a source-to-source compiler (transcompiler / transpiler).
+
+```
+app.ts ---> tsc app.ts ---> app.js
+```
+
