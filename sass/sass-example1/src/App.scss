@@ -1,0 +1,62 @@
+//variable example
+$i-want-turquoise: turquoise;
+$i-want-black: black;
+$i-want-purple: purple;
+
+//mixin example
+@mixin div-style{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+@mixin p-style {
+    padding: 20px;  
+    font-size: 60px;  
+    font-weight: bold;
+    text-align: center;
+}
+
+//interpolation example
+@mixin div-theme($name, $bg-color, $color) {
+    #{$name} {
+        background-color: #{$bg-color};
+        color: #{$color};
+    }
+}
+
+//the line below is an example of how to call the interpolation method
+@include div-theme(".black", $i-want-black, $i-want-purple);
+@include div-theme(".purple", $i-want-purple, $i-want-black);
+
+.App {
+    display: flex;
+    height: 100vh;
+}
+
+.purple{
+    //the line below is an example of how to call the existing mixin
+    @include div-style;
+    p{ //this p tag placed inside the called class, which represents the Nesting method
+        //the line below is an example of how to call the existing mixin
+        @include p-style;
+    }
+}
+
+//the line below is an example of how to call the variables that stated earlier
+.divider{
+    width: 5%;
+    background-color: $i-want-turquoise;
+}
+
+.black{
+    //the line below is an example of how to call the existing mixin
+    @include div-style;
+    p{ //this p tag placed inside the called class, which represents the Nesting method
+        //the line below is an example of how to call the existing mixin
+        @include p-style;
+
+    }
+}
