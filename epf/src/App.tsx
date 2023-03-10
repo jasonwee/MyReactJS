@@ -35,18 +35,18 @@ type EPF = {
   open_acc2: number,
   total: number,
   month: {
-    jan : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    feb : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    mar : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    apr : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    may : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    jun : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    jul : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    aug : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    sep : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    oct : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    nov : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
-    dec : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    jan : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    feb : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    mar : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    apr : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    may : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    jun : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    jul : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    aug : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    sep : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    oct : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    nov : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
+    dec : { employer : number, employee : number, total_emp : number, account1: number, account2: number, total: number},
   }
 }
 
@@ -63,65 +63,65 @@ function App() {
       return this.open_acc1 + this.open_acc2;
     },
     month: {
-      jan : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe}, 
-              get acc1() { return initialState.open_acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.open_acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      jan : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee}, 
+              get account1() { return initialState.open_acc1 + this.total_emp * ratio},
+              get account2() { return initialState.open_acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      feb : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe}, 
-              get acc1() { return initialState.month.jan.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.jan.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      feb : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee}, 
+              get account1() { return initialState.month.jan.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.jan.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      mar : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
-              get acc1() { return initialState.month.feb.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.feb.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      mar : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee},
+              get account1() { return initialState.month.feb.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.feb.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      apr : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
-              get acc1() { return initialState.month.mar.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.mar.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      apr : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee},
+              get account1() { return initialState.month.mar.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.mar.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      may : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
-              get acc1() { return initialState.month.apr.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.apr.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      may : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee},
+              get account1() { return initialState.month.apr.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.apr.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      jun : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
-              get acc1() { return initialState.month.may.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.may.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      jun : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee},
+              get account1() { return initialState.month.may.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.may.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      jul : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
-              get acc1() { return initialState.month.jun.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.jun.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      jul : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee},
+              get account1() { return initialState.month.jun.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.jun.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      aug : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
-              get acc1() { return initialState.month.jul.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.jul.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      aug : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee},
+              get account1() { return initialState.month.jul.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.jul.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      sep : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
-              get acc1() { return initialState.month.aug.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.aug.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      sep : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee},
+              get account1() { return initialState.month.aug.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.aug.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      oct : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
-              get acc1() { return initialState.month.sep.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.sep.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      oct : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee},
+              get account1() { return initialState.month.sep.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.sep.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      nov : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
-              get acc1() { return initialState.month.oct.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.oct.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      nov : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee},
+              get account1() { return initialState.month.oct.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.oct.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
-      dec : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
-              get acc1() { return initialState.month.nov.acc1 + this.total_emp * ratio},
-              get acc2() { return initialState.month.nov.acc2 + this.total_emp * (1-ratio)},
-              get total() { return this.acc1 + this.acc2}
+      dec : { employer : 1100, employee : 1200, get total_emp() {  return this.employer + this.employee},
+              get account1() { return initialState.month.nov.account1 + this.total_emp * ratio},
+              get account2() { return initialState.month.nov.account2 + this.total_emp * (1-ratio)},
+              get total() { return this.account1 + this.account2}
             },
     }
   };
@@ -132,121 +132,121 @@ function App() {
     {
       id: "Jan",
       month: "Jan",
-      employer: state.month.jan.empr,
-      employee: state.month.jan.empe,
+      employer: state.month.jan.employer,
+      employee: state.month.jan.employee,
       total_emp: state.month.jan.total_emp,
-      account1: state.month.jan.acc1,
-      account2: state.month.jan.acc2,
+      account1: state.month.jan.account1,
+      account2: state.month.jan.account2,
       total: state.month.jan.total,
     },
     {
       id: "Feb",
       month: "Feb",
-      employer: state.month.feb.empr,
-      employee: state.month.feb.empe,
+      employer: state.month.feb.employer,
+      employee: state.month.feb.employee,
       total_emp: state.month.feb.total_emp,
-      account1: state.month.feb.acc1,
-      account2: state.month.feb.acc2,
+      account1: state.month.feb.account1,
+      account2: state.month.feb.account2,
       total: state.month.feb.total,
     },
     {
       id: "Mar",
       month: "Mar",
-      employer: state.month.mar.empr,
-      employee: state.month.mar.empe,
+      employer: state.month.mar.employer,
+      employee: state.month.mar.employee,
       total_emp: state.month.mar.total_emp,
-      account1: state.month.mar.acc1,
-      account2: state.month.mar.acc2,
+      account1: state.month.mar.account1,
+      account2: state.month.mar.account2,
       total: state.month.mar.total,
     },
     {
       id: "Apr",
       month: "Apr",
-      employer: state.month.apr.empr,
-      employee: state.month.apr.empe,
+      employer: state.month.apr.employer,
+      employee: state.month.apr.employee,
       total_emp: state.month.apr.total_emp,
-      account1: state.month.apr.acc1,
-      account2: state.month.apr.acc2,
+      account1: state.month.apr.account1,
+      account2: state.month.apr.account2,
       total: state.month.apr.total,
     },
     {
       id: "May",
       month: "May",
-      employer: state.month.may.empr,
-      employee: state.month.may.empe,
+      employer: state.month.may.employer,
+      employee: state.month.may.employee,
       total_emp: state.month.may.total_emp,
-      account1: state.month.may.acc1,
-      account2: state.month.may.acc2,
+      account1: state.month.may.account1,
+      account2: state.month.may.account2,
       total: state.month.may.total,
     },
     {
       id: "Jun",
       month: "Jun",
-      employer: state.month.jun.empr,
-      employee: state.month.jun.empe,
+      employer: state.month.jun.employer,
+      employee: state.month.jun.employee,
       total_emp: state.month.jun.total_emp,
-      account1: state.month.jun.acc1,
-      account2: state.month.jun.acc2,
+      account1: state.month.jun.account1,
+      account2: state.month.jun.account2,
       total: state.month.jun.total,
     },
     {
       id: "Jul",
       month: "Jul",
-      employer: state.month.jul.empr,
-      employee: state.month.jul.empe,
+      employer: state.month.jul.employer,
+      employee: state.month.jul.employee,
       total_emp: state.month.jul.total_emp,
-      account1: state.month.jul.acc1,
-      account2: state.month.jul.acc2,
+      account1: state.month.jul.account1,
+      account2: state.month.jul.account2,
       total: state.month.jul.total,
     },
     {
       id: "Aug",
       month: "Aug",
-      employer: state.month.aug.empr,
-      employee: state.month.aug.empe,
+      employer: state.month.aug.employer,
+      employee: state.month.aug.employee,
       total_emp: state.month.aug.total_emp,
-      account1: state.month.aug.acc1,
-      account2: state.month.aug.acc2,
+      account1: state.month.aug.account1,
+      account2: state.month.aug.account2,
       total: state.month.aug.total,
     },
     {
       id: "Sep",
       month: "Sep",
-      employer: state.month.sep.empr,
-      employee: state.month.sep.empe,
+      employer: state.month.sep.employer,
+      employee: state.month.sep.employee,
       total_emp: state.month.sep.total_emp,
-      account1: state.month.sep.acc1,
-      account2: state.month.sep.acc2,
+      account1: state.month.sep.account1,
+      account2: state.month.sep.account2,
       total: state.month.sep.total,
     },
     {
       id: "Oct",
       month: "Oct",
-      employer: state.month.oct.empr,
-      employee: state.month.oct.empe,
+      employer: state.month.oct.employer,
+      employee: state.month.oct.employee,
       total_emp: state.month.oct.total_emp,
-      account1: state.month.oct.acc1,
-      account2: state.month.oct.acc2,
+      account1: state.month.oct.account1,
+      account2: state.month.oct.account2,
       total: state.month.oct.total,
     },
     {
       id: "Nov",
       month: "Nov",
-      employer: state.month.nov.empr,
-      employee: state.month.nov.empe,
+      employer: state.month.nov.employer,
+      employee: state.month.nov.employee,
       total_emp: state.month.nov.total_emp,
-      account1: state.month.nov.acc1,
-      account2: state.month.nov.acc2,
+      account1: state.month.nov.account1,
+      account2: state.month.nov.account2,
       total: state.month.nov.total,
     },
     {
       id: "Dec",
       month: "Dec",
-      employer: state.month.dec.empr,
-      employee: state.month.dec.empe,
+      employer: state.month.dec.employer,
+      employee: state.month.dec.employee,
       total_emp: state.month.dec.total_emp,
-      account1: state.month.dec.acc1,
-      account2: state.month.dec.acc2,
+      account1: state.month.dec.account1,
+      account2: state.month.dec.account2,
       total: state.month.dec.total,
     },
   ];
@@ -329,6 +329,7 @@ function App() {
         }
         return value;
       },
+      sortable: false,
     },
     {
       field: "employer",
@@ -338,6 +339,7 @@ function App() {
       width: 120,
       cellClassName: "super-app-theme--cell",
       flex: 1,
+      sortable: false,
     },
     {
       field: "employee",
@@ -347,6 +349,7 @@ function App() {
       width: 120,
       cellClassName: "super-app-theme--cell",
       flex: 1,
+      sortable: false,
     },
     {
       field: "total_emp",
@@ -354,6 +357,7 @@ function App() {
       type: "number",
       width: 120,
       flex: 1,
+      sortable: false,
     },
     {
       field: "account1",
@@ -369,6 +373,7 @@ function App() {
 
         return "";
       },
+      sortable: false,
     },
     {
       field: "account2",
@@ -384,6 +389,7 @@ function App() {
 
         return "";
       },
+      sortable: false,
     },
     {
       field: "total",
@@ -391,6 +397,7 @@ function App() {
       type: "number",
       width: 120,
       flex: 1,
+      sortable: false,
     },
   ];
 
@@ -456,9 +463,56 @@ function App() {
     return "";
   };
 
-  const processRowUpdate = (newRow : Row, oldRow : Row) => {
-    // console.log(newRow);
-    // console.log(oldRow);
+  const processRowUpdate = (newRow : any, oldRow : any) => {
+    // console.log(JSON.stringify(newRow));
+    // console.log(JSON.stringify(oldRow));
+
+    const newState = {...state};
+
+
+    const { id, month, ...new1Row} = newRow;
+
+    switch (newRow.id) {
+      case 'Jan':    
+        newState.month.jan = new1Row;
+        break;
+      case 'Feb':
+        newState.month.feb = new1Row;
+        break;
+      case 'Mar':
+        newState.month.mar = new1Row;
+        break;
+      case 'Apr':
+        newState.month.apr = new1Row;
+        break;
+      case 'May':
+        newState.month.may = new1Row;
+        break;
+      case 'Jun':
+        newState.month.jun = new1Row;
+        break;
+      case 'Jul':
+        newState.month.jul = new1Row;
+        break;
+      case 'Aug':
+        newState.month.aug = new1Row;
+        break;
+      case 'Sep':
+        newState.month.sep = new1Row;
+        break;
+      case 'Oct':
+        newState.month.oct = new1Row;
+        break;
+      case 'Nov':
+        newState.month.nov = new1Row;
+        break;
+      case 'Dec':
+        newState.month.dec = new1Row;
+        break;
+    }
+    setState(newState);
+
+    console.log(state);
 
     return newRow;
   }
