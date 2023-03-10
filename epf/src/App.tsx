@@ -5,30 +5,23 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+import clsx from 'clsx';
 //import './App.css';
 //import Button from '@mui/material/Button';
 //import FormGroup from '@mui/material/FormGroup';
 //import FormControlLabel from '@mui/material/FormControlLabel';
 //import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
-import { DataGrid, GridColDef, GridRowsProp, GridColumnGroupingModel } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRowsProp, GridColumnGroupingModel, DataGridProps, GridCellParams, GridRenderEditCellParams } from '@mui/x-data-grid';
+import { alignProperty } from '@mui/material/styles/cssUtils';
+import { RampRight } from '@mui/icons-material';
 
 
 
 
 function App() {
 
-    const columns: GridColDef[] = [
-  { field: 'month', headerName: 'Month' },
-  { field: 'employer', headerName: 'Employer (RM)', type: 'number', editable: true, width: 120, cellClassName: 'super-app-theme--cell', },
-  { field: 'employee', headerName: 'Employee (RM)', type: 'number', editable: true, width: 120, cellClassName: 'super-app-theme--cell', },
-  { field: 'total_emp', headerName: 'Total (RM)', type: 'number', width: 120},
-  { field: 'account1', headerName: 'Account 1 (RM)', type: 'number', width: 120},
-  { field: 'account2', headerName: 'Account 2 (RM)', type: 'number', width: 120},
-  { field: 'total', headerName: 'Total (RM)', type: 'number', width: 120},
-];
-
-const rows: GridRowsProp = [
+const rows1: GridRowsProp = [
   {
     id : "Jan",
     month: "Jan",
@@ -145,10 +138,87 @@ const rows: GridRowsProp = [
     employer: 1100,
     employee: 1200,
     total_emp: 2300,
-    account1: 89320,
+    account1: 89320, 
     account2: 38280,
     total: 127600,
   },
+];
+
+type Item = (typeof rows1)[number];
+
+interface OpeningBalanceHeader {
+  id: 'Opening Balance';
+  label: string;
+  account1: number;
+  account2: number;
+  total: number;
+}
+
+interface DividenHeader {
+  id: 'Dividend Received for Year';
+  label: string;
+  account1: number;
+  account2: number;
+  total: number;
+}
+
+interface BalanceHeader {
+  id: 'Balance as of 31st Dec';
+  label: string;
+  account1: number;
+  account2: number;
+  total: number;
+}
+
+type Row = Item | OpeningBalanceHeader | DividenHeader | BalanceHeader;
+
+const rows: Row[] = [
+  { id: 'Opening Balance', label: 'Opening Balance', account1: 70000, account2: 30000, total: 100000 },
+  ...rows1,
+  { id: 'Dividend Received for Year', label: 'Dividend Received for Year', account1: 4854.18, account2: 2080.36, total: 6934.55 },
+  { id: 'Balance as of 31st Dec', label: 'Balance as of 31st Dec', account1: 94174.18, account2: 40360.36, total: 134534.55 },
+];
+
+
+const columns: GridColDef<Row>[] = [
+  { field: 'month', headerName: 'Month', flex: 1,
+    colSpan: ({ row }) => {
+    if (row.id === 'Opening Balance' || row.id === 'Dividend Received for Year' || row.id === 'Balance as of 31st Dec') {
+      return 4;
+    }
+    return undefined;
+  },
+  valueGetter: ({ value, row }) => {
+    if (row.id === 'Opening Balance' || row.id === 'Dividend Received for Year' || row.id === 'Balance as of 31st Dec') {
+      return row.label;
+    }
+    return value;
+  },
+  },
+  { field: 'employer', headerName: 'Employer (RM)', type: 'number', editable: true, width: 120, cellClassName: 'super-app-theme--cell', flex: 1},
+  { field: 'employee', headerName: 'Employee (RM)', type: 'number', editable: true, width: 120, cellClassName: 'super-app-theme--cell', flex: 1},
+  { field: 'total_emp', headerName: 'Total (RM)', type: 'number', width: 120, flex: 1},
+  { field: 'account1', headerName: 'Account 1 (RM)', type: 'number', width: 120, flex: 1, editable: true,
+    cellClassName: (params: GridCellParams<Row>) => {
+
+      if (params.id == 'Opening Balance') {
+        return 'super-app-theme--cell';
+      }
+
+      return '';
+    },
+  },
+  { field: 'account2', headerName: 'Account 2 (RM)', type: 'number', width: 120, flex: 1, editable: true,
+    cellClassName: (params: GridCellParams<Row>) => {
+
+    if (params.id == 'Opening Balance') {
+      return 'super-app-theme--cell';
+    }
+
+    return '';
+    },
+  },
+  { field: 'total', headerName: 'Total (RM)', type: 'number', width: 120, flex: 1},
 ];
 
 const columnGroupingModel: GridColumnGroupingModel = [
@@ -189,28 +259,56 @@ const columnGroupingModel: GridColumnGroupingModel = [
 
      */
 
+    const getCellClassName: DataGridProps['getCellClassName'] = ({ row, field }) => {
+      if (row.id === 'Opening Balance' || row.id === 'Dividend Received for Year' || row.id === 'Balance as of 31st Dec') {
+        if (field === 'month') {
+          return 'bold';
+        }
+      }
+      return '';
+    };
+
   return (
      <React.Fragment>
      <CssBaseline />
      <Box sx={{ bgcolor: '#efeded'}}>
-     <Container fixed>
-        <Box sx={{ bgcolor: '#ffffff', height: '100vh' }}>
+     <Container fixed >
+        <Box sx={{ bgcolor: '#ffffff', height: '100vh'}}>
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={2}>
-                <Grid xs={12}>
+                <Grid xs={12} sx={{display: 'flex', justifyContent: 'center' }}>
                   <Typography variant="h3" gutterBottom>Employees Provident Fund (EPF) Dividend Calculator</Typography>
                 </Grid>
-                <Grid xs={12}>
-                  <TextField  label="Year" variant="outlined" />
-                  <TextField  label="Dividend" variant="filled" />
+                <Grid xs={12} sx={{display: 'flex', justifyContent: 'center' }}>
+                  <TextField sx={{marginRight: 1}} label="Year" variant="outlined" />
+                  <TextField sx={{marginLeft: 1}} label="Dividend" variant="filled" />
                 </Grid>
-                <Grid xs={12}>
-                   <Box sx={{ height: 600, width: '100%',  '& .super-app-theme--cell': {
-          backgroundColor: '#b3e5fc',
-          color: '#03a9f4',
-          fontWeight: '600',
-        }, }}>
-                      <DataGrid experimentalFeatures={{ columnGrouping: true }} rows={rows} columns={columns}  columnGroupingModel={columnGroupingModel} density='compact' hideFooter={true} />
+                <Grid xs={12} >
+                   <Box sx={{ width: '100%',  
+                      '& .super-app-theme--cell': {
+                        backgroundColor: '#b3e5fc',
+                        color: '#03a9f4',
+                        fontWeight: '600',
+                      }, 
+                      '& .bold': {
+                        fontWeight: 800,
+                        justifyContent: 'flex-end !important',
+                      }
+                      }}>
+                      <DataGrid sx={{m: 5}} 
+                                experimentalFeatures={{ columnGrouping: true }}
+                                rows={rows}
+                                columns={columns}
+                                columnGroupingModel={columnGroupingModel}
+                                getCellClassName={getCellClassName}
+                                density='compact'
+                                showColumnVerticalBorder
+                                isCellEditable={(params) => {
+                                  console.log(params);
+                                  return params.row.id == 'Opening Balance' || params.field == 'employer' || params.field == 'employee';
+                                }}
+                                autoHeight
+                                hideFooter />
                    </Box>
                 </Grid>
               </Grid>
