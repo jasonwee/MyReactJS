@@ -20,132 +20,234 @@ import {
   DataGridProps,
   GridCellParams,
   GridRenderEditCellParams,
+  GridValueSetterParams,
+  GridCellEditStopParams,
+  MuiEvent
 } from "@mui/x-data-grid";
 import { alignProperty } from "@mui/material/styles/cssUtils";
 import { RampRight } from "@mui/icons-material";
 
+
+type EPF = {
+  year: number,
+  dividend: number,
+  open_acc1: number,
+  open_acc2: number,
+  total: number,
+  month: {
+    jan : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    feb : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    mar : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    apr : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    may : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    jun : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    jul : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    aug : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    sep : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    oct : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    nov : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+    dec : { empr : number, empe : number, total_emp : number, acc1: number, acc2: number, total: number},
+  }
+}
+
 function App() {
+
+  const ratio = 0.7;
+
+  const initialState : EPF = {
+    year: new Date().getFullYear(),
+    dividend: 5.35,
+    open_acc1: 70000,
+    open_acc2: 30000,
+    get total () {
+      return this.open_acc1 + this.open_acc2;
+    },
+    month: {
+      jan : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe}, 
+              get acc1() { return initialState.open_acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.open_acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      feb : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe}, 
+              get acc1() { return initialState.month.jan.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.jan.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      mar : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
+              get acc1() { return initialState.month.feb.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.feb.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      apr : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
+              get acc1() { return initialState.month.mar.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.mar.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      may : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
+              get acc1() { return initialState.month.apr.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.apr.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      jun : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
+              get acc1() { return initialState.month.may.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.may.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      jul : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
+              get acc1() { return initialState.month.jun.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.jun.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      aug : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
+              get acc1() { return initialState.month.jul.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.jul.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      sep : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
+              get acc1() { return initialState.month.aug.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.aug.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      oct : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
+              get acc1() { return initialState.month.sep.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.sep.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      nov : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
+              get acc1() { return initialState.month.oct.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.oct.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+      dec : { empr : 1100, empe : 1200, get total_emp() {  return this.empr + this.empe},
+              get acc1() { return initialState.month.nov.acc1 + this.total_emp * ratio},
+              get acc2() { return initialState.month.nov.acc2 + this.total_emp * (1-ratio)},
+              get total() { return this.acc1 + this.acc2}
+            },
+    }
+  };
+
+  const [state, setState] = React.useState(initialState);
 
   const rows1: GridRowsProp = [
     {
       id: "Jan",
       month: "Jan",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 71610,
-      account2: 30690,
-      total: 102300,
+      employer: state.month.jan.empr,
+      employee: state.month.jan.empe,
+      total_emp: state.month.jan.total_emp,
+      account1: state.month.jan.acc1,
+      account2: state.month.jan.acc2,
+      total: state.month.jan.total,
     },
     {
       id: "Feb",
       month: "Feb",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 73220,
-      account2: 36380,
-      total: 104600,
+      employer: state.month.feb.empr,
+      employee: state.month.feb.empe,
+      total_emp: state.month.feb.total_emp,
+      account1: state.month.feb.acc1,
+      account2: state.month.feb.acc2,
+      total: state.month.feb.total,
     },
     {
       id: "Mar",
       month: "Mar",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 74830,
-      account2: 32070,
-      total: 106900,
+      employer: state.month.mar.empr,
+      employee: state.month.mar.empe,
+      total_emp: state.month.mar.total_emp,
+      account1: state.month.mar.acc1,
+      account2: state.month.mar.acc2,
+      total: state.month.mar.total,
     },
     {
       id: "Apr",
       month: "Apr",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 76440,
-      account2: 32760,
-      total: 109200,
+      employer: state.month.apr.empr,
+      employee: state.month.apr.empe,
+      total_emp: state.month.apr.total_emp,
+      account1: state.month.apr.acc1,
+      account2: state.month.apr.acc2,
+      total: state.month.apr.total,
     },
     {
       id: "May",
       month: "May",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 78050,
-      account2: 33450,
-      total: 111500,
+      employer: state.month.may.empr,
+      employee: state.month.may.empe,
+      total_emp: state.month.may.total_emp,
+      account1: state.month.may.acc1,
+      account2: state.month.may.acc2,
+      total: state.month.may.total,
     },
     {
       id: "Jun",
       month: "Jun",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 79660,
-      account2: 34140,
-      total: 113800,
+      employer: state.month.jun.empr,
+      employee: state.month.jun.empe,
+      total_emp: state.month.jun.total_emp,
+      account1: state.month.jun.acc1,
+      account2: state.month.jun.acc2,
+      total: state.month.jun.total,
     },
     {
       id: "Jul",
       month: "Jul",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 81270,
-      account2: 34830,
-      total: 116100,
+      employer: state.month.jul.empr,
+      employee: state.month.jul.empe,
+      total_emp: state.month.jul.total_emp,
+      account1: state.month.jul.acc1,
+      account2: state.month.jul.acc2,
+      total: state.month.jul.total,
     },
     {
       id: "Aug",
       month: "Aug",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 82880,
-      account2: 35520,
-      total: 118400,
+      employer: state.month.aug.empr,
+      employee: state.month.aug.empe,
+      total_emp: state.month.aug.total_emp,
+      account1: state.month.aug.acc1,
+      account2: state.month.aug.acc2,
+      total: state.month.aug.total,
     },
     {
       id: "Sep",
       month: "Sep",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 84490,
-      account2: 36210,
-      total: 120700,
+      employer: state.month.sep.empr,
+      employee: state.month.sep.empe,
+      total_emp: state.month.sep.total_emp,
+      account1: state.month.sep.acc1,
+      account2: state.month.sep.acc2,
+      total: state.month.sep.total,
     },
     {
       id: "Oct",
       month: "Oct",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 86100,
-      account2: 36900,
-      total: 123000,
+      employer: state.month.oct.empr,
+      employee: state.month.oct.empe,
+      total_emp: state.month.oct.total_emp,
+      account1: state.month.oct.acc1,
+      account2: state.month.oct.acc2,
+      total: state.month.oct.total,
     },
     {
       id: "Nov",
       month: "Nov",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 87710,
-      account2: 37590,
-      total: 125300,
+      employer: state.month.nov.empr,
+      employee: state.month.nov.empe,
+      total_emp: state.month.nov.total_emp,
+      account1: state.month.nov.acc1,
+      account2: state.month.nov.acc2,
+      total: state.month.nov.total,
     },
     {
       id: "Dec",
       month: "Dec",
-      employer: 1100,
-      employee: 1200,
-      total_emp: 2300,
-      account1: 89320,
-      account2: 38280,
-      total: 127600,
+      employer: state.month.dec.empr,
+      employee: state.month.dec.empe,
+      total_emp: state.month.dec.total_emp,
+      account1: state.month.dec.acc1,
+      account2: state.month.dec.acc2,
+      total: state.month.dec.total,
     },
   ];
 
@@ -181,21 +283,21 @@ function App() {
     {
       id: "Opening Balance",
       label: "Opening Balance",
-      account1: 70000,
-      account2: 30000,
-      total: 100000,
+      account1: state.open_acc1,
+      account2: state.open_acc2,
+      total: state.total,
     },
     ...rows1,
     {
       id: "Dividend Received for Year",
-      label: "Dividend Received for Year",
+      label: "Dividend Received for Year " + state.year,
       account1: 4854.18,
       account2: 2080.36,
       total: 6934.55,
     },
     {
       id: "Balance as of 31st Dec",
-      label: "Balance as of 31st Dec",
+      label: "Balance as of 31st Dec " + state.year,
       account1: 94174.18,
       account2: 40360.36,
       total: 134534.55,
@@ -354,6 +456,14 @@ function App() {
     return "";
   };
 
+  const processRowUpdate = (newRow : Row, oldRow : Row) => {
+    // console.log(newRow);
+    // console.log(oldRow);
+
+    return newRow;
+  }
+
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -378,11 +488,16 @@ function App() {
                     sx={{ marginRight: 1 }}
                     label="Year"
                     variant="outlined"
+                    value={state.year}
+                    onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setState({...state, year: parseInt(ev.currentTarget.value)})}
                   />
                   <TextField
+                    type="number"
                     sx={{ marginLeft: 1 }}
                     label="Dividend"
                     variant="filled"
+                    value={state.dividend}
+                    onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setState({...state, dividend: +ev.currentTarget.value})}
                   />
                 </Grid>
                 <Grid xs={12}>
@@ -409,14 +524,12 @@ function App() {
                       getCellClassName={getCellClassName}
                       density="compact"
                       showColumnVerticalBorder
-                      isCellEditable={(params) => {
-                        console.log(params);
-                        return (
+                      isCellEditable={(params) => 
                           params.row.id == "Opening Balance" ||
                           params.field == "employer" ||
                           params.field == "employee"
-                        );
-                      }}
+                      }
+                      processRowUpdate = {processRowUpdate}
                       autoHeight
                       hideFooter
                     />
