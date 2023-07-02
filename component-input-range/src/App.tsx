@@ -1,27 +1,49 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
-import Button from './Button';
+import DoubleRangeSlider from './DoubleRangeSlider';
 
 function App() {
+
+  const [state, setState] = React.useState({
+    lowLevelValue: 5,
+    highLevelValue: 10,
+    changed: false
+  });
+
+
+  const setCurrentMinHandler = (min: number) => {
+    setState(prevState => {
+        const newState = {...prevState}
+        newState.lowLevelValue = min;
+        newState.changed = true
+        return newState;
+    })
+  }
+
+  const setCurrentMaxHandler = (max: number) => {
+    setState(prevState => {
+      const newState = {...prevState}
+      newState.highLevelValue = max;
+      newState.changed = true
+      return newState;
+      })
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button onClick={() => console.log("hi")}>
-          <span>click me</span>
-        </Button>
+          <DoubleRangeSlider
+              min={3}
+              max={20}
+              currentMax={state.highLevelValue}
+              currentMin={state.lowLevelValue}
+              setCurrentMinHandler={setCurrentMinHandler}
+              setCurrentMaxHandler={setCurrentMaxHandler}
+              defaultMin={5}
+              defaultMax={10}
+          />
       </header>
     </div>
   );
