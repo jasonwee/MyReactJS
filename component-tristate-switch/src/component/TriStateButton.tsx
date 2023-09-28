@@ -7,7 +7,6 @@ const TriStateButton = () => {
 
   const [text, setText] = useState("All");
   const [value, setValue] = useState(2);
-  const [stateClasses, setStateClasses] = useState(["customToggle", "tglDef"]);
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const curValue = parseInt(event.target.value, 10);
