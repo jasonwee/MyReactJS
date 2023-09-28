@@ -9,3 +9,5 @@ cd component-tristate-switch
 npm i sass
 
 ```
+
+![sample](sample.gif)
