@@ -1,0 +1,21 @@
+.slider {
+    width: 300px;
+    height: 10px;
+    background-color: #ccc;
+    position: relative;
+}
+
+.slider-track {
+    height: 100%;
+    background-color: #007BFF;
+}
+
+.slider-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #007BFF;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+}
+
