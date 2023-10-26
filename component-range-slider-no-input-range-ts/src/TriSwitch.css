@@ -1,0 +1,22 @@
+.tri-switch {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  border-radius: 50px;
+}
+
+.tri-switch-option {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tri-switch-option.selected {
+  background-color: #007BFF;
+  color: #fff;
+  border-radius: 50px;
+}
+
