@@ -17,5 +17,8 @@
     border-radius: 50%;
     position: absolute;
     cursor: pointer;
+    top: -50%;
 }
+
+
 

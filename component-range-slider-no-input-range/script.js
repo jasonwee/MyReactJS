@@ -20,6 +20,7 @@ function onMouseMove(e) {
     const rect = slider.getBoundingClientRect();
     let x = e.clientX - rect.left;
     x = Math.max(0, Math.min(x, rect.width));
+    console.log(x);
 
     const value = (x / rect.width) * 100;
     sliderTrack.style.width = `${value}%`;
@@ -28,6 +29,22 @@ function onMouseMove(e) {
     const sliderValueText = Math.round((value / 100) * 100);
     sliderValue.textContent = sliderValueText;
 }
+/*
+function onMouseMove(e) {
+    if (!isDragging) return;
+
+    const rect = slider.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    x = Math.max(0, Math.min(x, rect.width));
+
+    const value = (x / rect.width) * 100;
+    sliderTrack.style.width = `${value}%`;
+    sliderThumb.style.left = `calc(${value}% - 10px)`;
+
+    const sliderValueText = Math.round((value / 100) * 100);
+    sliderValue.textContent = sliderValueText;
+}
+*/
 
 function onMouseUp() {
     isDragging = false;
