@@ -3,7 +3,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
-  border-radius: 50px;
+  border-radius: 15px;
 }
 
 .tri-switch-option {
@@ -12,11 +12,26 @@
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s;
+  border-radius: 15px;
 }
 
 .tri-switch-option.selected {
   background-color: #007BFF;
   color: #fff;
-  border-radius: 50px;
+  border-radius: 15px;
 }
 
+/*
+.thumb {
+  position: absolute;
+  width: 33.33%;
+  height: 100%;
+  background-color: #007BFF;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s;
+  border-radius: 15px;
+}
+*/
