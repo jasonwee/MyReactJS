@@ -6,10 +6,12 @@ import './App.css';
 import TriSwitch from './TriSwitch';
 
 function App() {
+  const options = ['', '', ''];
+
   return (
     <div className="App">
        <header className="App-header">
-          <TriSwitch />
+          <TriSwitch options={options} />
        </header>
     </div>
   );
