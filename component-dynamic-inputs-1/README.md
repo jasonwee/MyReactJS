@@ -7,3 +7,5 @@ $ npx create-react-app component-dynamic-inputs-1 --template typescript
 $ cd component-dynamic-inputs-1
 $ 
 ```
+
+![sample.png](sample.png "sample output")
