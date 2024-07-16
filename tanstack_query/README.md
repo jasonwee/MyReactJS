@@ -1,3 +1,4 @@
+https://www.youtube.com/watch?v=r8Dg0KVnfMA
 ```
 $ source init-env-nodejs22-4-0.sh
 $ npx create-react-app tanstack_query
