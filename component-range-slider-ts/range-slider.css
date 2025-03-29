@@ -1,0 +1,162 @@
+
+.range-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.range-slider__track {
+  display: flex;
+  position: relative;
+  align-items: center;
+  --range-slider-track__flex-direction: auto;
+  flex-direction: var(--range-slider-track__flex-direction);
+}
+
+.range-slider__track--vertical {
+  flex-direction: column;
+}
+
+.range-slider__track--column {
+  --range-slider-track__flex-direction: column;
+}
+
+.range-slider__track--column-reverse {
+  --range-slider-track__flex-direction: column-reverse;
+}
+
+.range-slider__track--row {
+  --range-slider-track__flex-direction: row;
+}
+
+.range-slider__input {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+.range-slider__input-writing-mode--vertical {
+  writing-mode: vertical-lr;
+}
+
+.range-slider__input-writing-mode--horizontal {
+  writing-mode: horizontal-tb;
+}
+
+/******************************/
+/* input range custom styling */
+/******************************/
+
+/* chrome: styling for the track */
+.range-slider__input::-webkit-slider-runnable-track {
+  height: calc(var(--height--s) * 0.3125);
+  background: var(--color-table-cell-border);
+  border: none;
+  border-radius: calc(var(--border-radius--large) * 0.1875);
+}
+
+/* chrome: thumb styling */
+.range-slider__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: var(--height--s);
+  width: var(--width--xxs);
+  border-radius: var(--border-radius--full);
+  background: var(--color-sepp-mail-dark);
+  margin-top: calc(var(--width--xxs) * -0.25);
+}
+
+/* chrome: no outline on input focus */
+.range-slider__input:focus {
+  outline: none;
+}
+
+/* chrome: when input is focused, set color to the track */
+.range-slider__input:focus::-webkit-slider-runnable-track {
+  background: var(--color-sepp-mail-light-gray);
+}
+
+/* chrome: when in vertical position, set track width */
+.range-slider__input--vertical::-webkit-slider-runnable-track {
+  width: calc(var(--width--xxs) * 0.3125);
+}
+
+/* chrome: style the thumb such that it is at the center of the track */
+.range-slider__input--vertical::-webkit-slider-thumb {
+  /* Remove any offset for vertical mode */
+  margin-top: 0;
+  /* Center the thumb horizontally */
+  margin-left: -5px;
+}
+
+/* firefox:  style slider track */
+.range-slider__input::-moz-range-track {
+  background: var(--color-table-cell-border);
+  border: none;
+  border-radius: calc(var(--border-radius--large) * 0.1875);
+}
+
+/* firefox: when in vertical position, set track width */
+.range-slider__input--vertical::-moz-range-track {
+  width: calc(var(--width--xxs) * 0.3125);
+}
+
+/* firefox: style the thumb */
+.range-slider__input::-moz-range-thumb {
+  border: none;
+  border-radius: var(--border-radius--full);
+  background: var(--color-sepp-mail-dark);
+}
+
+/* firefox: when input is focused, set background color to the track */
+.range-slider__input:focus::-moz-range-track {
+  background: var(--color-sepp-mail-light-gray);
+}
+
+/******************************/
+/* input range custom styling */
+/******************************/
+
+.range-slider__value-label {
+  width: calc(var(--width--xxs) * 1.25);
+  height: calc(var(--height--s) * 1.5625);
+  position: relative;
+  top: calc(var(--height--s) * -2.375);
+  left: calc(var(--width--xxs) * 0.4375);
+  color: var(--color-gray--dark);
+  pointer-events: none;
+}
+
+.range-slider__value {
+  position: absolute;
+  top: calc(var(--height--s) * 0.275);
+  left: 50%;
+  text-align: center;
+  font-size: calc(var(--font-size--base) * 0.5);
+  font-weight: bold;
+  transform: translateX(-50%);
+  z-index: var(--zindex--element);
+}
+
+.range-slider__value--vertical {
+  left: 30%;
+}
+
+.range-slider__value--rotate-neg90deg {
+  transform: rotate(-90deg);
+}
+
+.range-slider__svg {
+  height: inherit;
+  position: relative;
+  left: calc(var(--width--xxs) * 0.0625);
+  fill: var(--color-info--half-trans);
+  z-index: var(--zindex--behind);
+  pointer-events: none;
+}
+
+.range-slider__label {
+  font-weight: normal;
+}
