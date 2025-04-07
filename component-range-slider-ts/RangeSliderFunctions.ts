@@ -22,24 +22,25 @@ export const calcStep = ({ offsetWidth, min, max }: {
  * Calculate the vertical position of the range value label.
  *
  * @param rangeCurrent current range value.
- * @param sliderHeight current slider height
  * @param max maximum of the slider range
  * @param min minimum of the slider range
  * @returns the percentage of the slider height
  */
 export const calcVertical = ({
   rangeCurrent,
-  sliderHeight,
+  step,
   min,
-  max
+  max,
+  thumbHeight=10
 }: {
   rangeCurrent: number
-  sliderHeight: number
+  step: number
   min: number
   max: number
+  thumbHeight?: number,
 }): number => {
   if (max-min === 0) return 0
 
-  const percentage = (rangeCurrent - max) / (max - min);
-  return percentage * sliderHeight;
+  const percentage = (rangeCurrent * step) - (step * max);
+  return percentage - thumbHeight;
 };

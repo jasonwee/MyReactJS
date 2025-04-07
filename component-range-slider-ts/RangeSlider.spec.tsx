@@ -22,8 +22,7 @@ describe("RangeSlider", () => {
         class="range-slider"
       >
         <div
-          class="range-slider__track"
-          style="flex-direction: row;"
+          class="range-slider__track range-slider__track--row"
         >
           <label
             class="range-slider__label"
@@ -31,10 +30,9 @@ describe("RangeSlider", () => {
             0
           </label>
           <input
-            class="range-slider__input "
+            class="range-slider__input range-slider__input-writing-mode--horizontal"
             max="100"
             min="0"
-            style="writing-mode: horizontal-tb;"
             type="range"
             value="50"
           />
@@ -66,8 +64,7 @@ describe("RangeSlider", () => {
         class="range-slider"
       >
         <div
-          class="range-slider__track"
-          style="flex-direction: row;"
+          class="range-slider__track range-slider__track--row"
         >
           <label
             class="range-slider__label"
@@ -75,10 +72,9 @@ describe("RangeSlider", () => {
             0
           </label>
           <input
-            class="range-slider__input "
+            class="range-slider__input range-slider__input-writing-mode--horizontal"
             max="100"
             min="0"
-            style="writing-mode: horizontal-tb;"
             type="range"
             value="50"
           />
@@ -130,8 +126,7 @@ describe("RangeSlider", () => {
         class="range-slider"
       >
         <div
-          class="range-slider__track"
-          style="flex-direction: column;"
+          class="range-slider__track range-slider__track--column"
         >
           <label
             class="range-slider__label"
@@ -139,10 +134,9 @@ describe("RangeSlider", () => {
             0
           </label>
           <input
-            class="range-slider__input range-slider__input--vertical"
+            class="range-slider__input range-slider__input--vertical range-slider__input-writing-mode--vertical"
             max="100"
             min="0"
-            style="writing-mode: vertical-lr;"
             type="range"
             value="50"
           />
@@ -155,11 +149,10 @@ describe("RangeSlider", () => {
         <label
           class="range-slider__value-label"
           for="range"
-          style="transform: translateY(0px) translateX(13px) rotate(90deg);"
+          style="transform: translateY(-60px) translateX(13px) rotate(90deg);"
         >
           <span
-            class="range-slider__value range-slider__value--vertical"
-            style="transform: rotate(-90deg);"
+            class="range-slider__value range-slider__value--vertical range-slider__value--rotate-neg90deg"
           >
             50
           </span>

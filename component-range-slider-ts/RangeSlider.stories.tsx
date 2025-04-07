@@ -6,7 +6,7 @@ import { RangeSlider } from "./"
 
 
 const Template = (args: any) => {
-  const initialRangeValue = 50;
+  const initialRangeValue = args.rangeCurrent || 50;
 
   const [rangeCurrent, setRangeCurrent] = React.useState(initialRangeValue);
   const [step, setStep] = React.useState(0);
@@ -75,11 +75,11 @@ Vertical.parameters = {
   }
 }
 Vertical.args = {
-  min: 0,
-  max: 100,
+  min: 3,
+  max: 12,
   step: 1,
   setStep: () => {},
-  rangeCurrent: 50,
+  rangeCurrent: 5,
   setRangeCurrent: () => {},
   showSliderValueLabel: true,
   isVertical: true,

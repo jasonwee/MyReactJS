@@ -32,24 +32,24 @@ describe("calcStep", () => {
 describe("calcVertical", () => {
 
   test("unit", () => {
-    let actual = calcVertical({rangeCurrent:0, sliderHeight:100, min:0, max:100})
-    expect(actual).toEqual(-100)
+    let actual = calcVertical({rangeCurrent:0, step:1, min:0, max:100})
+    expect(actual).toEqual(-110)
 
-    actual = calcVertical({rangeCurrent:20, sliderHeight:100, min:0, max:100})
-    expect(actual).toEqual(-80)
+    actual = calcVertical({rangeCurrent:20, step:1, min:0, max:100})
+    expect(actual).toEqual(-90)
 
-    actual = calcVertical({rangeCurrent:50, sliderHeight:100, min:0, max:100})
-    expect(actual).toEqual(-50)
+    actual = calcVertical({rangeCurrent:50, step:1, min:0, max:100})
+    expect(actual).toEqual(-60)
 
-    actual = calcVertical({rangeCurrent:75, sliderHeight:100, min:0, max:100})
-    expect(actual).toEqual(-25)
+    actual = calcVertical({rangeCurrent:75, step:1, min:0, max:100})
+    expect(actual).toEqual(-35)
 
-    actual = calcVertical({rangeCurrent:100, sliderHeight:100, min:0, max:100})
-    expect(actual).toEqual(0)
+    actual = calcVertical({rangeCurrent:100, step:1, min:0, max:100})
+    expect(actual).toEqual(-10)
   })
 
   test("edge",() => {
-    const actual = calcVertical({rangeCurrent:10, sliderHeight:100, min:0, max:0})
+    const actual = calcVertical({rangeCurrent:10, step:1, min:0, max:0})
     expect(actual).toEqual(0)
   })
 

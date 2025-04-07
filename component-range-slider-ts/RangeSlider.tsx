@@ -29,10 +29,16 @@ export const RangeSlider = ({
 
   useEffect(() => {
     if (ref.current) {
-      const steps = calcStep({
-        offsetWidth: ref.current.offsetWidth,
-        min: ref.current.min,
-        max: ref.current.max
+      const steps = isVertical ?
+        calcStep({
+          offsetWidth: ref.current.offsetHeight,
+          min: ref.current.min,
+          max: ref.current.max
+        }) :
+        calcStep({
+          offsetWidth: ref.current.offsetWidth,
+          min: ref.current.min,
+          max: ref.current.max
       });
       setStep(steps);
     }
@@ -57,7 +63,7 @@ export const RangeSlider = ({
         <label htmlFor="range"
                style={{
                   transform: isVertical
-                  ? `translateY(${calcVertical({rangeCurrent, sliderHeight: ref.current?.offsetHeight || 0, min, max})}px) translateX(13px) rotate(90deg)`
+                  ? `translateY(${calcVertical({rangeCurrent, step, min, max})}px) translateX(13px) rotate(90deg)`
                   : `translateX(${(rangeCurrent * step) - (step * min)}px) translateY(-3px)`,
                 }}
               className="range-slider__value-label">
