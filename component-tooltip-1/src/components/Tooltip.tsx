@@ -6,7 +6,7 @@ import "./Tooltip.css";
 const Tooltip = ({ content, disabled, children }: ITooltip) => {
   return (
     <div className="tooltipContainer">
-      <div className={`tooltip${disabled ? " disabled" : ""}`} >
+      <div className={`tooltip ${disabled ? " disabled" : ""}`} >
         {content}
       </div>
       {children}
