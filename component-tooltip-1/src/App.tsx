@@ -4,7 +4,7 @@ import "./App.css";
 const App = () => {
   return (
     <div className="container">
-      <Tooltip disabled={false} content={"Unexpand the sidebar"}>
+      <Tooltip disabled={true} content={"Unexpand the sidebar"}>
         <div className="label">Hover on me (Up tootip)</div>
       </Tooltip>
     </div>
