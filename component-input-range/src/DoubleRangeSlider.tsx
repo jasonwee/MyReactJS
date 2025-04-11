@@ -17,7 +17,7 @@ interface IProps {
     setCurrentMaxHandler: (min: number) => void;
     defaultMin: number;
     defaultMax: number;
-  }
+}
 
 /* https://codesandbox.io/s/multi-range-slider-react-ts-b9l0g?file=/src/multiRangeSlider/MultiRangeSlider.tsx */
 const DoubleRangeSlider = (props: IProps) => {
