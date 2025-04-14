@@ -1,6 +1,8 @@
-import React, {useEffect, useRef, useState, ChangeEvent, MouseEvent} from "react";
+import React, {useEffect, useRef, useState, ChangeEvent, MouseEvent, TouchEvent} from "react";
 
 import './DoubleRangeSlider.scss';
+import { MouseEventHandler } from "react";
+import { EventHandler } from "react";
 
 interface IState {
     sliderWidth: number;
@@ -102,19 +104,21 @@ export default function DoubleRangeSlider() {
 
     }
 
-    /*
-    const changeMinValue = (e: ChangeEvent<HTMLInputElement>) => {
+    const changeMinValue = (e:MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>) => {
        e.preventDefault();
+       console.log("helo");
 
-       document.addEventListener('mousemove', this.onMouseMoveMin);
-       document.addEventListener('mouseup', this.onMouseUpMin);
+       /* TODO FIXME
+       document.addEventListener('mousemove', onMouseMoveMin);
+       document.addEventListener('mouseup', onMouseUpMin);
 
-       document.addEventListener('touchmove', this.onMouseMoveMin);
-       document.addEventListener('touchend', this.onMouseUpMin);
+       document.addEventListener('touchmove', onMouseMoveMin);
+       document.addEventListener('touchend', onMouseUpMin);
+       */
+       
     }
-    */
 
-    const onMouseMoveMin = (e: MouseEvent<HTMLInputElement>) => {
+    const onMouseMoveMin = (e:MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>) => {
 
        /*
         const { min, max, currentMax, minValueBetween, sliderWidth, offsetSliderWidht } = this.state;
@@ -208,17 +212,19 @@ export default function DoubleRangeSlider() {
        }
     }
 
-    /*
-    const changeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
+    
+    const changeMaxValue = (e:MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>) => {
        e.preventDefault();
 
+       /*
        document.addEventListener('mousemove', this.onMouseMoveMax);
        document.addEventListener('mouseup', this.onMouseUpMax);
 
        document.addEventListener('touchmove', this.onMouseMoveMax);
        document.addEventListener('touchend', this.onMouseUpMax);
+       */
     }
-    */
+    
 
     const onMouseMoveMax = (e: MouseEvent<HTMLInputElement>) => {
        /*
@@ -239,6 +245,8 @@ export default function DoubleRangeSlider() {
     }
     */
        //const maxWalueThumb = this.maxValue;
+       console.log("hello");
+       console.log(e.clientX);
        const dragedWidth = e.clientX - state.offsetSliderWidth;
        const dragedWidthInPercent = (dragedWidth * 100) / state.sliderWidth;
        const currentMax = Math.abs((state.max * dragedWidthInPercent)/100);
@@ -314,13 +322,24 @@ export default function DoubleRangeSlider() {
           </div>
 
           </div> */ }
+          {/*
+
+           */}
        <div ref={sliderRef} id="slider">
           <div ref={minValueRef} id="min" data-content={state.currentMin}>
-             <div ref={minValueRef} id="min-drag" ></div>
+          <div ref={minValueRef} id="min-drag" 
+               onMouseDown={(e: MouseEvent<HTMLDivElement>) => changeMinValue(e)} 
+               onTouchStart={(e: TouchEvent<HTMLDivElement>) => changeMinValue(e)}
+               onTouchMove={(e: TouchEvent<HTMLDivElement>) => onMouseMoveMin(e)} >
+               </div>
           </div>
 
           <div ref={maxValueRef} id="max" data-content={state.currentMax}>
-             <div ref={maxValueRef} id="max-drag" ></div>
+             <div ref={maxValueRef} id="max-drag" 
+                  onMouseDown={(e: MouseEvent<HTMLDivElement>) => changeMaxValue(e)} 
+                  onTouchStart={(e: TouchEvent<HTMLDivElement>) => changeMaxValue(e)}>
+
+                  </div>
           </div>
        </div>
 
