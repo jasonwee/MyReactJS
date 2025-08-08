@@ -35,6 +35,10 @@
   border-bottom: 1px solid transparent;
 }
 
+.tooltip.visible {
+  visibility: visible; /* Show when .visible class is present */
+}
+
 .disabled {
   visibility: hidden;
 }
