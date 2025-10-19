@@ -1,38 +1,95 @@
-.App {
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+h1 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ======== MODAL ========== */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000099;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.modal-main {
+  position: fixed;
+  background: white;
+  width: 35rem;
+  height: auto;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-radius: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.modal.display-block {
+  display: block;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal.display-none {
+  display: none;
+}
+
+.modal-head {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modal-body {
+  margin-bottom: 2rem;
+}
+
+/* ======== CARD ========== */
+
+.card {
+  width: 12rem;
+  background: lightgrey;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+/* ======== BUTTON ========= */
+
+.btn-container {
+  width: 10rem;
+  padding-bottom: 2rem;
+}
+
+.btn {
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  padding: 0 25px;
+  text-align: center;
+  width: 100%;
 }
