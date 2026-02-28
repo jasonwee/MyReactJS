@@ -53,3 +53,6 @@ All container components need access to the Redux Store to subscribe to it. For 
 ```
 $ touch src/index.js
 ```
+
+
+https://javascript.plainenglish.io/a-simple-guide-to-the-redux-toolkit-e360e28dcb5c
